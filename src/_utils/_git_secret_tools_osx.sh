@@ -18,10 +18,17 @@ function __temp_file_osx {
 function __sha256_osx {
   /usr/bin/shasum -a256 "$1"
 }
+
 function __get_octal_perms_osx {
   local filename
   filename=$1
   local perms
   perms=$(stat -f '%p' "$filename")
   echo "$perms"
+}
+
+function __shred_file_osx {
+   local filename
+   filename=$1
+   rm -P "$filename"
 }

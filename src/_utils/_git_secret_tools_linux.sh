@@ -24,3 +24,9 @@ function __get_octal_perms_linux {
   perms=$(stat --format '%a' "$filename")
   echo "$perms"
 }
+
+function __shred_file_linux {
+   local filename
+   filename=$1
+   shred "$filename"
+}
