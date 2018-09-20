@@ -19,6 +19,10 @@ function keep {
 
   # Command logic:
 
+  # Firstly, hide the files to make sure they are up-to-date
+  hide
+
+  # Now securely remove the hidden files
   filenames=()
   _list_all_added_files  # exports 'filenames' array
   local filename
@@ -29,5 +33,5 @@ function keep {
       _os_based __shred_file "$path"
     fi
   done
-  echo "done. all ${#filename[@]} securely deleted"
+  echo "done. all ${#filename[@]} files securely deleted"
 }

@@ -28,5 +28,5 @@ function __get_octal_perms_linux {
 function __shred_file_linux {
    local filename
    filename=$1
-   shred "$filename"
+   shred -u "$filename"
 }
