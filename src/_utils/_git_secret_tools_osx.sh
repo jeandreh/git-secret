@@ -28,7 +28,9 @@ function __get_octal_perms_osx {
 }
 
 function __shred_file_osx {
+   local verbose
    local filename
-   filename=$1
-   rm -P "$filename"
+   verbose=$1
+   filename=$2
+   rm -P$verbose "$filename"
 }

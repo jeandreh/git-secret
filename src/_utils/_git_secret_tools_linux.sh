@@ -26,7 +26,9 @@ function __get_octal_perms_linux {
 }
 
 function __shred_file_linux {
+   local verbose
    local filename
-   filename=$1
-   shred -u "$filename"
+   verbose=$1
+   filename=$2
+   shred -u$verbose "$filename"
 }

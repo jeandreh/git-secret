@@ -35,14 +35,18 @@ function _optional_delete {
 
     # We use custom formatting here:
     if [[ -n "$verbose" ]]; then
-      echo && echo 'removing unencrypted files:'
+      echo && echo 'securely removing unencrypted files:'
     fi
 
     while read -r line; do
       # So the formatting would not be repeated several times here:
       local filename
+      local path
       filename=$(_get_record_filename "$line")
-      _find_and_clean "*$filename" "$verbose"
+      path=$(_append_root_path "$filename")
+      if [[ -f "$path" ]]; then
+        _os_based __shred_file "$verbose" "$path"
+      fi
     done < "$path_mappings"
 
     if [[ -n "$verbose" ]]; then
